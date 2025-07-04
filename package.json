@@ -6,5 +6,11 @@
     "schema": "backend/prisma/schema.prisma"
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
+    "ts-node": "^10.9.2"
+  },
+  "prisma": {
+    "schema": "backend/prisma/schema.prisma",
+    "seed": "ts-node backend/prisma/seed.ts"
   }
 }

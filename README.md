@@ -59,22 +59,22 @@ cd ../backend
 npm install
 ```
 3. Build the backend server:
-```
+```sh
 cd backend
 npm run build
-````
-4. Start the backend server:
 ```
+4. Start the backend server:
+```sh
 cd backend
 npm start
 ```
 5. In a new terminal window, build the frontend server:
-```
+```sh
 cd frontend
 npm run build
 ```
 6. Start the frontend server:
-```
+```sh
 cd frontend
 npm start
 ```
@@ -89,72 +89,28 @@ Install Docker on your machine if you haven't done so already. You can download 
 Navigate to the root directory of the project in your terminal.
 Run the following command to start the Docker container:
 
-```
+```sh
 docker-compose up -d
 ```
 This will start a PostgreSQL database in a Docker container. The -d flag runs the container in detached mode, which means it runs in the background.
 
-To access the PostgreSQL database, you can use any PostgreSQL client with the following connection details:
-
-- Host: localhost
-- Port: 5432
-- User: postgres
-- Password: password
-- Database: mydatabase
-  
-Please replace User, Password, and Database with the actual username, password, and database name specified in your .env file.
-
 To stop the Docker container, run the following command:
 
-```
+```sh
 docker-compose down
 ```
 To generate the database using Prisma, follow these steps:
 
-1. Make sure that the .env file in the root directory of the backend contains the DATABASE_URL variable with the correct connection string to your PostgreSQL database. If it doesn’t work, try replacing the full URL directly in schema.prisma, in the url variable.
-
-2. Open a terminal and navigate to the backend directory where the schema.prisma and seed.ts files are located.
-
-3. Run the following commands to generate the Prisma structure, apply migrations to your database, and populate it with sample data:
-
-```
-npx prisma generate
+```sh
+cd backend
 npx prisma migrate dev
-ts-node seed.ts
+npx prisma db seed
 ```
 
 Once you have completed all the steps, you should be able to save new candidates, both via web and via API, view them in the database, and retrieve them using GET by ID.
 
-```
-POST http://localhost:3010/candidates
-{
-    "firstName": "Albert",
-    "lastName": "Saelices",
-    "email": "albert.saelices@gmail.com",
-    "phone": "656874937",
-    "address": "Calle Sant Dalmir 2, 5ºB. Barcelona",
-    "educations": [
-        {
-            "institution": "UC3M",
-            "title": "Computer Science",
-            "startDate": "2006-12-31",
-            "endDate": "2010-12-26"
-        }
-    ],
-    "workExperiences": [
-        {
-            "company": "Coca Cola",
-            "position": "SWE",
-            "description": "",
-            "startDate": "2011-01-13",
-            "endDate": "2013-01-17"
-        }
-    ],
-    "cv": {
-        "filePath": "uploads/1715760936750-cv.pdf",
-        "fileType": "application/pdf"
-    }
-}
+```sh
+curl -X GET http://localhost:3010/candidates/1
 ```
 
 --------------------------------------------
@@ -219,22 +175,22 @@ cd ../backend
 npm install
 ```
 3. Construye el servidor backend:
-```
+```sh
 cd backend
 npm run build
-````
-4. Inicia el servidor backend:
 ```
+4. Inicia el servidor backend:
+```sh
 cd backend
 npm start
 ```
 5. En una nueva ventana de terminal, construye el servidor frontend:
-```
+```sh
 cd frontend
 npm run build
 ```
 6. Inicia el servidor frontend:
-```
+```sh
 cd frontend
 npm start
 ```
@@ -248,69 +204,26 @@ Este proyecto usa Docker para ejecutar una base de datos PostgreSQL. Así es có
 Instala Docker en tu máquina si aún no lo has hecho. Puedes descargarlo desde aquí.
 Navega al directorio raíz del proyecto en tu terminal.
 Ejecuta el siguiente comando para iniciar el contenedor Docker:
-```
+```sh
 docker-compose up -d
 ```
-Esto iniciará una base de datos PostgreSQL en un contenedor Docker. La bandera -d corre el contenedor en modo separado, lo que significa que se ejecuta en segundo plano.
-
-Para acceder a la base de datos PostgreSQL, puedes usar cualquier cliente PostgreSQL con los siguientes detalles de conexión:
- - Host: localhost
- - Port: 5432
- - User: postgres
- - Password: password
- - Database: mydatabase
-
-Por favor, reemplaza User, Password y Database con el usuario, la contraseña y el nombre de la base de datos reales especificados en tu archivo .env.
 
 Para detener el contenedor Docker, ejecuta el siguiente comando:
-```
+```sh
 docker-compose down
 ```
 
 Para generar la base de datos utilizando Prisma, sigue estos pasos:
 
-1. Asegúrate de que el archivo `.env` en el directorio raíz del backend contenga la variable `DATABASE_URL` con la cadena de conexión correcta a tu base de datos PostgreSQL. Si no te funciona, prueba a reemplazar la URL completa directamente en `schema.prisma`, en la variable `url`.
-
-2. Abre una terminal y navega al directorio del backend donde se encuentra el archivo `schema.prisma` y `seed.ts`.
-
-3. Ejecuta los siguientes comandos para generar la estructura de prisma, las migraciones a tu base de datos y poblarla con datos de ejemplo:
-```
-npx prisma generate
+```sh
+cd backend
 npx prisma migrate dev
-ts-node seed.ts
+npx prisma db seed
 ```
 
 Una vez has dado todos los pasos, deberías poder guardar nuevos candidatos, tanto via web, como via API, verlos en la base de datos y obtenerlos mediante GET por id.
 
-```
-POST http://localhost:3010/candidates
-{
-    "firstName": "Albert",
-    "lastName": "Saelices",
-    "email": "albert.saelices@gmail.com",
-    "phone": "656874937",
-    "address": "Calle Sant Dalmir 2, 5ºB. Barcelona",
-    "educations": [
-        {
-            "institution": "UC3M",
-            "title": "Computer Science",
-            "startDate": "2006-12-31",
-            "endDate": "2010-12-26"
-        }
-    ],
-    "workExperiences": [
-        {
-            "company": "Coca Cola",
-            "position": "SWE",
-            "description": "",
-            "startDate": "2011-01-13",
-            "endDate": "2013-01-17"
-        }
-    ],
-    "cv": {
-        "filePath": "uploads/1715760936750-cv.pdf",
-        "fileType": "application/pdf"
-    }
-}
+```sh
+curl -X GET http://localhost:3010/candidates/1
 ```
 
