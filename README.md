@@ -102,7 +102,6 @@ docker-compose down
 To generate the database using Prisma, follow these steps:
 
 ```sh
-cd backend
 npx prisma migrate dev
 npx prisma db seed
 ```
@@ -216,7 +215,6 @@ docker-compose down
 Para generar la base de datos utilizando Prisma, sigue estos pasos:
 
 ```sh
-cd backend
 npx prisma migrate dev
 npx prisma db seed
 ```
